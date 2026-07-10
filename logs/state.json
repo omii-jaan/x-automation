@@ -1,0 +1,21 @@
+{
+  "posts_today": 2,
+  "posts_today_date": "2026-07-10",
+  "last_post_at": "2026-07-10T18:30:05.459530+00:00",
+  "shadowbanned": false,
+  "shadowban_until": null,
+  "history": [
+    {
+      "timestamp": "2026-07-10T23:48:51.067684+05:30",
+      "content": "Most AI demos are just polished failures, masking inherent flaws with clever prompts and curated datasets, setting unrealistic expectations for actual deployment.",
+      "tweet_id": "unknown",
+      "status": "posted"
+    },
+    {
+      "timestamp": "2026-07-11T00:00:05.459554+05:30",
+      "content": "The myth that every startup needs a CTO is fading fast, thanks to no-code tools and cloud services that abstract away the plumbing, letting founders focus on the actual product.",
+      "tweet_id": "unknown",
+      "status": "posted"
+    }
+  ]
+}

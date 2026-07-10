@@ -1,0 +1,618 @@
+2026-07-10 19:13:39,633 [INFO] ============================================================
+2026-07-10 19:13:39,634 [INFO] Twitter bot starting up
+2026-07-10 19:13:39,634 [INFO] Dry run mode: True
+2026-07-10 19:13:39,634 [INFO] Model: meta-llama/llama-3.2-3b-instruct:free
+2026-07-10 19:13:39,634 [INFO] Current IST time: 2026-07-10T19:13:39.634905+05:30
+2026-07-10 19:13:39,635 [INFO] ============================================================
+2026-07-10 19:13:39,635 [INFO] Applying 1149s (19.1 min) jitter
+2026-07-10 19:19:14,618 [INFO] ============================================================
+2026-07-10 19:19:14,618 [INFO] Twitter bot starting up
+2026-07-10 19:19:14,619 [INFO] Dry run mode: True
+2026-07-10 19:19:14,619 [INFO] Model: meta-llama/llama-3.2-3b-instruct:free
+2026-07-10 19:19:14,619 [INFO] Current IST time: 2026-07-10T19:19:14.619515+05:30
+2026-07-10 19:19:14,619 [INFO] ============================================================
+2026-07-10 19:19:14,619 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 19:19:14,620 [INFO] Generating tweet via OpenRouter...
+2026-07-10 19:19:14,623 [INFO] Attempt 1/3 — style=prediction, temp=1.07, target_len=244, examples=10
+2026-07-10 19:19:17,288 [ERROR] OpenRouter HTTP error: 429 - {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.2-3b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false,"retry_after_seconds":18,"retry_after_seconds_raw":17.588,"headers":{"Retry-After":"18"}}},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:19:17,288 [WARNING] Attempt 1: no response, retrying...
+2026-07-10 19:19:17,289 [INFO] Attempt 2/3 — style=prediction, temp=1.03, target_len=111, examples=6
+2026-07-10 19:19:18,894 [ERROR] OpenRouter HTTP error: 429 - {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.2-3b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false,"retry_after_seconds":16,"retry_after_seconds_raw":15.962,"headers":{"Retry-After":"16"}}},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:19:18,895 [WARNING] Attempt 2: no response, retrying...
+2026-07-10 19:19:18,895 [INFO] Attempt 3/3 — style=question, temp=0.81, target_len=86, examples=7
+2026-07-10 19:19:20,487 [ERROR] OpenRouter HTTP error: 429 - {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"meta-llama/llama-3.2-3b-instruct:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Venice","is_byok":false,"retry_after_seconds":15,"retry_after_seconds_raw":14.38,"headers":{"Retry-After":"15"}}},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:19:20,487 [WARNING] Attempt 3: no response, retrying...
+2026-07-10 19:19:20,487 [ERROR] All 3 attempts failed
+2026-07-10 19:19:20,487 [ERROR] AI generation failed after retries
+2026-07-10 19:19:20,488 [INFO] [Telegram disabled] *Post failed*
+
+*Reason:* AI generation failed after retries
+2026-07-10 19:30:27,866 [INFO] ============================================================
+2026-07-10 19:30:27,866 [INFO] Twitter bot starting up
+2026-07-10 19:30:27,866 [INFO] Dry run mode: True
+2026-07-10 19:30:27,866 [INFO] Model: meta-llama/llama-3.2-3b-instruct:free
+2026-07-10 19:30:27,867 [INFO] Current IST time: 2026-07-10T19:30:27.867032+05:30
+2026-07-10 19:30:27,867 [INFO] ============================================================
+2026-07-10 19:30:27,867 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 19:30:27,868 [INFO] Generating tweet via OpenRouter...
+2026-07-10 19:30:27,868 [INFO] Attempt 1/3 — style=question, temp=1.01, target_len=156, examples=8
+2026-07-10 19:30:27,869 [INFO]   Trying model: meta-llama/llama-3.2-3b-instruct:free
+2026-07-10 19:30:30,126 [WARNING] Model meta-llama/llama-3.2-3b-instruct:free rate-limited (429). Retry after 6s.
+2026-07-10 19:30:30,126 [INFO]   Waiting 6s before trying next model...
+2026-07-10 19:30:36,127 [INFO]   Trying model: mistralai/mistral-7b-instruct:free
+2026-07-10 19:30:37,215 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"No endpoints found for mistralai/mistral-7b-instruct:free.","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:30:37,215 [INFO]   Trying model: qwen/qwen-2.5-7b-instruct:free
+2026-07-10 19:30:38,229 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen-2.5-7b-instruct","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:30:38,229 [INFO]   Trying model: meta-llama/llama-3.1-8b-instruct:free
+2026-07-10 19:30:39,275 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: meta-llama/llama-3.1-8b-instruct","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:30:39,275 [INFO]   Trying model: google/gemini-flash-1.5
+2026-07-10 19:30:40,231 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"No endpoints found for google/gemini-flash-1.5.","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:30:40,231 [WARNING] All models failed on attempt 1. Waiting 15s before retry...
+2026-07-10 19:30:55,832 [INFO] ============================================================
+2026-07-10 19:30:55,833 [INFO] Twitter bot starting up
+2026-07-10 19:30:55,833 [INFO] Dry run mode: True
+2026-07-10 19:30:55,833 [INFO] Model: meta-llama/llama-3.2-3b-instruct:free
+2026-07-10 19:30:55,833 [INFO] Current IST time: 2026-07-10T19:30:55.833814+05:30
+2026-07-10 19:30:55,834 [INFO] ============================================================
+2026-07-10 19:30:55,834 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 19:30:55,834 [INFO] Generating tweet via OpenRouter...
+2026-07-10 19:30:55,835 [INFO] Attempt 1/3 — style=story, temp=0.92, target_len=137, examples=10
+2026-07-10 19:30:55,835 [INFO]   Trying model: meta-llama/llama-3.2-3b-instruct:free
+2026-07-10 19:30:57,918 [WARNING] Model meta-llama/llama-3.2-3b-instruct:free rate-limited (429). Retry after 8s.
+2026-07-10 19:30:57,919 [INFO]   Waiting 8s before trying next model...
+2026-07-10 19:31:05,920 [INFO]   Trying model: mistralai/mistral-7b-instruct:free
+2026-07-10 19:31:06,968 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"No endpoints found for mistralai/mistral-7b-instruct:free.","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:31:06,968 [INFO]   Trying model: qwen/qwen-2.5-7b-instruct:free
+2026-07-10 19:31:08,223 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen-2.5-7b-instruct","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:31:08,223 [INFO]   Trying model: meta-llama/llama-3.1-8b-instruct:free
+2026-07-10 19:31:09,298 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: meta-llama/llama-3.1-8b-instruct","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:31:09,298 [INFO]   Trying model: google/gemini-flash-1.5
+2026-07-10 19:31:10,289 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"No endpoints found for google/gemini-flash-1.5.","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:31:10,289 [WARNING] All models failed on attempt 1. Waiting 15s before retry...
+2026-07-10 19:31:25,289 [INFO] Attempt 2/3 — style=contrarian, temp=1.14, target_len=196, examples=8
+2026-07-10 19:31:25,290 [INFO]   Trying model: meta-llama/llama-3.2-3b-instruct:free
+2026-07-10 19:31:27,038 [WARNING] Model meta-llama/llama-3.2-3b-instruct:free rate-limited (429). Retry after 9s.
+2026-07-10 19:31:27,039 [INFO]   Waiting 9s before trying next model...
+2026-07-10 19:31:36,039 [INFO]   Trying model: mistralai/mistral-7b-instruct:free
+2026-07-10 19:31:37,041 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"No endpoints found for mistralai/mistral-7b-instruct:free.","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:31:37,041 [INFO]   Trying model: qwen/qwen-2.5-7b-instruct:free
+2026-07-10 19:31:37,988 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen-2.5-7b-instruct","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:31:37,988 [INFO]   Trying model: meta-llama/llama-3.1-8b-instruct:free
+2026-07-10 19:31:39,358 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: meta-llama/llama-3.1-8b-instruct","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:31:39,358 [INFO]   Trying model: google/gemini-flash-1.5
+2026-07-10 19:31:40,320 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"No endpoints found for google/gemini-flash-1.5.","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:31:40,320 [WARNING] All models failed on attempt 2. Waiting 15s before retry...
+2026-07-10 19:40:55,734 [INFO] ============================================================
+2026-07-10 19:40:55,734 [INFO] Twitter bot starting up
+2026-07-10 19:40:55,735 [INFO] Dry run mode: True
+2026-07-10 19:40:55,735 [INFO] Model: meta-llama/llama-3.2-3b-instruct:free
+2026-07-10 19:40:55,735 [INFO] Current IST time: 2026-07-10T19:40:55.735400+05:30
+2026-07-10 19:40:55,735 [INFO] ============================================================
+2026-07-10 19:40:55,736 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 19:40:55,736 [INFO] Generating tweet via OpenRouter...
+2026-07-10 19:40:55,736 [INFO] Attempt 1/3 — style=observation, temp=0.8, target_len=134, examples=8
+2026-07-10 19:40:55,736 [INFO]   Trying model: meta-llama/llama-3.2-3b-instruct:free
+2026-07-10 19:40:58,233 [WARNING] Model meta-llama/llama-3.2-3b-instruct:free rate-limited (429). Retry after 8s.
+2026-07-10 19:40:58,235 [INFO]   Waiting 8s before trying next model...
+2026-07-10 19:41:06,235 [INFO]   Trying model: mistralai/mistral-7b-instruct:free
+2026-07-10 19:41:07,433 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"No endpoints found for mistralai/mistral-7b-instruct:free.","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:41:07,434 [INFO]   Trying model: qwen/qwen-2.5-7b-instruct:free
+2026-07-10 19:41:08,369 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen-2.5-7b-instruct","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:41:08,370 [INFO]   Trying model: meta-llama/llama-3.1-8b-instruct:free
+2026-07-10 19:41:09,336 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: meta-llama/llama-3.1-8b-instruct","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:41:09,336 [INFO]   Trying model: google/gemini-flash-1.5
+2026-07-10 19:41:10,312 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"No endpoints found for google/gemini-flash-1.5.","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:41:10,313 [WARNING] All models failed on attempt 1. Waiting 15s before retry...
+2026-07-10 19:41:25,314 [INFO] Attempt 2/3 — style=prediction, temp=0.87, target_len=232, examples=10
+2026-07-10 19:41:25,314 [INFO]   Trying model: meta-llama/llama-3.2-3b-instruct:free
+2026-07-10 19:41:27,376 [WARNING] Model meta-llama/llama-3.2-3b-instruct:free rate-limited (429). Retry after 9s.
+2026-07-10 19:41:27,377 [INFO]   Waiting 9s before trying next model...
+2026-07-10 19:41:36,378 [INFO]   Trying model: mistralai/mistral-7b-instruct:free
+2026-07-10 19:41:37,322 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"No endpoints found for mistralai/mistral-7b-instruct:free.","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:41:37,322 [INFO]   Trying model: qwen/qwen-2.5-7b-instruct:free
+2026-07-10 19:41:38,330 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen-2.5-7b-instruct","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:41:38,331 [INFO]   Trying model: meta-llama/llama-3.1-8b-instruct:free
+2026-07-10 19:41:39,437 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: meta-llama/llama-3.1-8b-instruct","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:41:39,437 [INFO]   Trying model: google/gemini-flash-1.5
+2026-07-10 19:41:40,689 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"No endpoints found for google/gemini-flash-1.5.","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:41:40,695 [WARNING] All models failed on attempt 2. Waiting 15s before retry...
+2026-07-10 19:46:07,623 [INFO] ============================================================
+2026-07-10 19:46:07,623 [INFO] Twitter bot starting up
+2026-07-10 19:46:07,624 [INFO] Dry run mode: True
+2026-07-10 19:46:07,624 [INFO] Model: meta-llama/llama-3.2-3b-instruct:free
+2026-07-10 19:46:07,624 [INFO] Current IST time: 2026-07-10T19:46:07.624416+05:30
+2026-07-10 19:46:07,624 [INFO] ============================================================
+2026-07-10 19:46:07,625 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 19:46:07,625 [INFO] Generating tweet via OpenRouter...
+2026-07-10 19:46:07,625 [INFO] Attempt 1/3 — style=story, temp=0.81, target_len=84, examples=6
+2026-07-10 19:46:07,626 [INFO]   Trying model: meta-llama/llama-3.2-3b-instruct:free
+2026-07-10 19:46:10,719 [WARNING] Model meta-llama/llama-3.2-3b-instruct:free rate-limited (429). Retry after 26s.
+2026-07-10 19:46:10,720 [INFO]   Trying model: mistralai/mistral-7b-instruct:free
+2026-07-10 19:46:11,846 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"No endpoints found for mistralai/mistral-7b-instruct:free.","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:46:11,846 [INFO]   Trying model: qwen/qwen-2.5-7b-instruct:free
+2026-07-10 19:46:13,220 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen-2.5-7b-instruct","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:46:13,220 [INFO]   Trying model: meta-llama/llama-3.1-8b-instruct:free
+2026-07-10 19:46:14,418 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: meta-llama/llama-3.1-8b-instruct","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:46:14,418 [INFO]   Trying model: google/gemini-flash-1.5
+2026-07-10 19:46:15,637 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"No endpoints found for google/gemini-flash-1.5.","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:46:15,638 [WARNING] All models failed on attempt 1. Waiting 15s before retry...
+2026-07-10 19:46:30,638 [INFO] Attempt 2/3 — style=tip, temp=1.11, target_len=194, examples=6
+2026-07-10 19:46:30,638 [INFO]   Trying model: meta-llama/llama-3.2-3b-instruct:free
+2026-07-10 19:46:32,559 [WARNING] Model meta-llama/llama-3.2-3b-instruct:free rate-limited (429). Retry after 4s.
+2026-07-10 19:46:32,560 [INFO]   Waiting 4s before trying next model...
+2026-07-10 19:46:36,561 [INFO]   Trying model: mistralai/mistral-7b-instruct:free
+2026-07-10 19:46:38,110 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"No endpoints found for mistralai/mistral-7b-instruct:free.","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:46:38,110 [INFO]   Trying model: qwen/qwen-2.5-7b-instruct:free
+2026-07-10 19:46:39,220 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen-2.5-7b-instruct","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:46:39,220 [INFO]   Trying model: meta-llama/llama-3.1-8b-instruct:free
+2026-07-10 19:46:40,298 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: meta-llama/llama-3.1-8b-instruct","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:46:40,299 [INFO]   Trying model: google/gemini-flash-1.5
+2026-07-10 19:46:41,399 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"No endpoints found for google/gemini-flash-1.5.","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:46:41,399 [WARNING] All models failed on attempt 2. Waiting 15s before retry...
+2026-07-10 19:48:03,947 [INFO] ============================================================
+2026-07-10 19:48:03,948 [INFO] Twitter bot starting up
+2026-07-10 19:48:03,948 [INFO] Dry run mode: True
+2026-07-10 19:48:03,948 [INFO] Model: meta-llama/llama-3.2-3b-instruct:free
+2026-07-10 19:48:03,948 [INFO] Current IST time: 2026-07-10T19:48:03.948696+05:30
+2026-07-10 19:48:03,948 [INFO] ============================================================
+2026-07-10 19:48:03,949 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 19:48:03,949 [INFO] Generating tweet via OpenRouter...
+2026-07-10 19:48:03,950 [INFO] Attempt 1/3 — style=data_point, temp=1.1, target_len=83, examples=9
+2026-07-10 19:48:03,950 [INFO]   Trying model: meta-llama/llama-3.2-3b-instruct:free
+2026-07-10 19:48:06,887 [WARNING] Model meta-llama/llama-3.2-3b-instruct:free rate-limited (429). Retry after 30s.
+2026-07-10 19:48:06,887 [INFO]   Trying model: deepseek/deepseek-chat-v3-0324:free
+2026-07-10 19:48:08,121 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: deepseek/deepseek-chat-v3-0324","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:48:08,121 [INFO]   Trying model: google/gemini-2.0-flash-exp:free
+2026-07-10 19:48:09,296 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"No endpoints found for google/gemini-2.0-flash-exp:free.","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:48:09,296 [INFO]   Trying model: meta-llama/llama-3.3-70b-instruct:free
+2026-07-10 19:48:11,046 [WARNING] Model meta-llama/llama-3.3-70b-instruct:free rate-limited (429). Retry after 26s.
+2026-07-10 19:48:11,046 [INFO]   Trying model: qwen/qwen-2.5-72b-instruct:free
+2026-07-10 19:48:12,248 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen-2.5-72b-instruct","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:48:12,248 [INFO]   Trying model: deepseek/deepseek-r1:free
+2026-07-10 19:48:13,286 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: deepseek/deepseek-r1","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:48:13,286 [INFO]   Trying model: nousresearch/hermes-3-llama-3.1-405b:free
+2026-07-10 19:48:19,942 [WARNING] Model nousresearch/hermes-3-llama-3.1-405b:free rate-limited (429). Retry after 17s.
+2026-07-10 19:48:19,943 [WARNING] All models failed on attempt 1. Waiting 15s before retry...
+2026-07-10 19:48:34,944 [INFO] Attempt 2/3 — style=story, temp=1.01, target_len=201, examples=7
+2026-07-10 19:48:34,944 [INFO]   Trying model: meta-llama/llama-3.2-3b-instruct:free
+2026-07-10 19:48:37,068 [WARNING] Model meta-llama/llama-3.2-3b-instruct:free rate-limited (429). Retry after 30s.
+2026-07-10 19:48:37,068 [INFO]   Trying model: deepseek/deepseek-chat-v3-0324:free
+2026-07-10 19:48:38,786 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: deepseek/deepseek-chat-v3-0324","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:48:38,787 [INFO]   Trying model: google/gemini-2.0-flash-exp:free
+2026-07-10 19:48:40,035 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"No endpoints found for google/gemini-2.0-flash-exp:free.","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:48:40,035 [INFO]   Trying model: meta-llama/llama-3.3-70b-instruct:free
+2026-07-10 19:48:41,905 [WARNING] Model meta-llama/llama-3.3-70b-instruct:free rate-limited (429). Retry after 25s.
+2026-07-10 19:48:41,906 [INFO]   Trying model: qwen/qwen-2.5-72b-instruct:free
+2026-07-10 19:48:43,150 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: qwen/qwen-2.5-72b-instruct","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:48:43,150 [INFO]   Trying model: deepseek/deepseek-r1:free
+2026-07-10 19:48:44,436 [ERROR] OpenRouter HTTP error: 404 - {"error":{"message":"This model is unavailable for free. The paid version is available now - use this slug instead: deepseek/deepseek-r1","code":404},"user_id":"user_3ETkQ0vvJhVhy3qhIg49LuoqnP9"}
+2026-07-10 19:48:44,436 [INFO]   Trying model: nousresearch/hermes-3-llama-3.1-405b:free
+2026-07-10 19:48:46,772 [WARNING] Model nousresearch/hermes-3-llama-3.1-405b:free rate-limited (429). Retry after 20s.
+2026-07-10 19:48:46,773 [WARNING] All models failed on attempt 2. Waiting 15s before retry...
+2026-07-10 20:55:06,640 [INFO] ============================================================
+2026-07-10 20:55:06,641 [INFO] Twitter bot starting up
+2026-07-10 20:55:06,641 [INFO] Dry run mode: True
+2026-07-10 20:55:06,641 [INFO] Model: openai/gpt-oss-120b:free
+2026-07-10 20:55:06,641 [INFO] Current IST time: 2026-07-10T20:55:06.641692+05:30
+2026-07-10 20:55:06,641 [INFO] ============================================================
+2026-07-10 20:55:06,642 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 20:55:06,642 [INFO] Generating tweet via OpenRouter...
+2026-07-10 20:55:06,643 [INFO] Attempt 1/3 — style=story, temp=1.02, target_len=142, examples=10
+2026-07-10 20:55:06,643 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 20:55:08,554 [ERROR] OpenRouter HTTP error: 401 - {"error":{"message":"User not found.","code":401}}
+2026-07-10 20:55:08,554 [INFO]   Rate-limited. Waiting 20s before retrying openai/gpt-oss-120b:free...
+2026-07-10 20:55:28,555 [INFO] Attempt 2/3 — style=contrarian, temp=0.84, target_len=94, examples=7
+2026-07-10 20:55:28,555 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 20:55:30,021 [ERROR] OpenRouter HTTP error: 401 - {"error":{"message":"User not found.","code":401}}
+2026-07-10 20:55:30,021 [INFO]   Rate-limited. Waiting 20s before retrying openai/gpt-oss-120b:free...
+2026-07-10 21:01:48,804 [INFO] ============================================================
+2026-07-10 21:01:48,804 [INFO] Twitter bot starting up
+2026-07-10 21:01:48,805 [INFO] Dry run mode: True
+2026-07-10 21:01:48,805 [INFO] Model: openai/gpt-oss-120b:free
+2026-07-10 21:01:48,805 [INFO] Current IST time: 2026-07-10T21:01:48.805667+05:30
+2026-07-10 21:01:48,805 [INFO] ============================================================
+2026-07-10 21:01:48,806 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 21:01:48,806 [INFO] Generating tweet via OpenRouter...
+2026-07-10 21:01:48,807 [INFO] Attempt 1/3 — style=contrarian, temp=0.87, target_len=178, examples=9
+2026-07-10 21:01:48,808 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 21:01:51,229 [WARNING] Model openai/gpt-oss-120b:free rate-limited (429). Retry after 20s.
+2026-07-10 21:01:51,229 [INFO]   Rate-limited. Waiting 20s before retrying openai/gpt-oss-120b:free...
+2026-07-10 21:03:12,332 [INFO] ============================================================
+2026-07-10 21:03:12,332 [INFO] Twitter bot starting up
+2026-07-10 21:03:12,333 [INFO] Dry run mode: True
+2026-07-10 21:03:12,333 [INFO] Model: openai/gpt-oss-120b:free
+2026-07-10 21:03:12,333 [INFO] Current IST time: 2026-07-10T21:03:12.333622+05:30
+2026-07-10 21:03:12,333 [INFO] ============================================================
+2026-07-10 21:03:12,334 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 21:03:12,334 [INFO] Generating tweet via OpenRouter...
+2026-07-10 21:03:12,335 [INFO] Attempt 1/3 — style=hot_take, temp=0.76, target_len=129, examples=9
+2026-07-10 21:03:12,335 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 21:03:16,321 [WARNING] Model openai/gpt-oss-120b:free rate-limited (429). Retry after 20s.
+2026-07-10 21:03:16,322 [INFO]   Rate-limited. Waiting 20s before retrying openai/gpt-oss-120b:free...
+2026-07-10 21:03:36,323 [INFO] Attempt 2/3 — style=tip, temp=1.04, target_len=172, examples=8
+2026-07-10 21:03:36,323 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 21:03:38,427 [WARNING] Model openai/gpt-oss-120b:free rate-limited (429). Retry after 20s.
+2026-07-10 21:03:38,427 [INFO]   Rate-limited. Waiting 20s before retrying openai/gpt-oss-120b:free...
+2026-07-10 21:03:58,428 [INFO] Attempt 3/3 — style=data_point, temp=1.09, target_len=228, examples=9
+2026-07-10 21:03:58,428 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 21:04:00,386 [WARNING] Model openai/gpt-oss-120b:free rate-limited (429). Retry after 20s.
+2026-07-10 21:04:00,387 [INFO]   Rate-limited. Waiting 20s before retrying openai/gpt-oss-120b:free...
+2026-07-10 21:04:20,387 [ERROR] All 3 attempts failed for openai/gpt-oss-120b:free
+2026-07-10 21:04:20,388 [ERROR] AI generation failed after retries
+2026-07-10 21:04:20,388 [INFO] [Telegram disabled] *Post failed*
+
+*Reason:* AI generation failed after retries
+2026-07-10 21:22:36,680 [INFO] ============================================================
+2026-07-10 21:22:36,680 [INFO] Twitter bot starting up
+2026-07-10 21:22:36,680 [INFO] Dry run mode: True
+2026-07-10 21:22:36,680 [INFO] Model: openai/gpt-oss-120b:free
+2026-07-10 21:22:36,681 [INFO] Current IST time: 2026-07-10T21:22:36.681146+05:30
+2026-07-10 21:22:36,681 [INFO] ============================================================
+2026-07-10 21:22:36,682 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 21:22:36,682 [INFO] Generating tweet via OpenRouter...
+2026-07-10 21:22:36,682 [INFO] Attempt 1/3 — style=contrarian, temp=1.1, target_len=134, examples=10
+2026-07-10 21:22:36,683 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 21:22:41,979 [INFO] Generated (120 chars): Hot take: AI won't make solo devs obsolete any time soon. The real bottleneck is...
+2026-07-10 21:22:41,980 [INFO] Final content (120 chars): Hot take: AI won't make solo devs obsolete any time soon. The real bottleneck is product intuition, not code generation.
+2026-07-10 21:22:41,980 [INFO] Posting tweet via twikit...
+2026-07-10 21:22:42,005 [INFO] [DRY RUN] Would have posted: Hot take: AI won't make solo devs obsolete any time soon. The real bottleneck is product intuition, not code generation.
+2026-07-10 21:22:42,006 [INFO] Verifying tweet visibility...
+2026-07-10 21:22:42,006 [INFO] [DRY RUN] Skipping verification
+2026-07-10 21:22:42,007 [INFO] [Telegram disabled] *Posted successfully!*
+
+*Tweet ID:* `dry-run-id`
+*Content:*
+Hot take: AI won't make solo devs obsolete any time soon. The real bottleneck is product intuition, not code generation.
+
+View: https://x.com/i/status/dry-run-id
+2026-07-10 21:22:42,007 [INFO] Pipeline complete — tweet posted and verified
+2026-07-10 21:23:54,565 [INFO] ============================================================
+2026-07-10 21:23:54,566 [INFO] Twitter bot starting up
+2026-07-10 21:23:54,566 [INFO] Dry run mode: True
+2026-07-10 21:23:54,566 [INFO] Model: openai/gpt-oss-120b:free
+2026-07-10 21:23:54,566 [INFO] Current IST time: 2026-07-10T21:23:54.566856+05:30
+2026-07-10 21:23:54,567 [INFO] ============================================================
+2026-07-10 21:23:54,567 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 21:23:54,567 [INFO] Generating tweet via OpenRouter...
+2026-07-10 21:23:54,568 [INFO] Attempt 1/3 — style=contrarian, temp=1.1, target_len=184, examples=10
+2026-07-10 21:23:54,568 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 21:23:57,271 [WARNING] Model openai/gpt-oss-120b:free rate-limited (429). Retry after 20s.
+2026-07-10 21:23:57,271 [INFO]   Rate-limited. Waiting 20s before retrying openai/gpt-oss-120b:free...
+2026-07-10 21:24:17,272 [INFO] Attempt 2/3 — style=data_point, temp=0.8, target_len=184, examples=7
+2026-07-10 21:24:17,272 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 21:24:19,294 [WARNING] Model openai/gpt-oss-120b:free rate-limited (429). Retry after 20s.
+2026-07-10 21:24:19,294 [INFO]   Rate-limited. Waiting 20s before retrying openai/gpt-oss-120b:free...
+2026-07-10 21:24:39,295 [INFO] Attempt 3/3 — style=data_point, temp=1.0, target_len=254, examples=7
+2026-07-10 21:24:39,295 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 21:24:41,530 [WARNING] Model openai/gpt-oss-120b:free rate-limited (429). Retry after 20s.
+2026-07-10 21:24:41,531 [INFO]   Rate-limited. Waiting 20s before retrying openai/gpt-oss-120b:free...
+2026-07-10 21:34:43,218 [INFO] ============================================================
+2026-07-10 21:34:43,231 [INFO] Twitter bot starting up
+2026-07-10 21:34:43,233 [INFO] Dry run mode: True
+2026-07-10 21:34:43,253 [INFO] Model: openai/gpt-oss-120b:free
+2026-07-10 21:34:43,260 [INFO] Current IST time: 2026-07-10T21:34:43.260726+05:30
+2026-07-10 21:34:43,261 [INFO] ============================================================
+2026-07-10 21:34:43,261 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 21:34:43,261 [INFO] Generating tweet via OpenRouter...
+2026-07-10 21:34:43,262 [INFO] Attempt 1/3 — style=question, temp=0.88, target_len=150, examples=8
+2026-07-10 21:34:43,262 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 21:34:46,747 [WARNING] Model openai/gpt-oss-120b:free rate-limited (429). Retry after 20s.
+2026-07-10 21:34:46,749 [INFO]   Rate-limited. Waiting 20s before retrying openai/gpt-oss-120b:free...
+2026-07-10 21:36:07,249 [INFO] ============================================================
+2026-07-10 21:36:07,250 [INFO] Twitter bot starting up
+2026-07-10 21:36:07,250 [INFO] Dry run mode: True
+2026-07-10 21:36:07,251 [INFO] Model: openai/gpt-oss-120b:free
+2026-07-10 21:36:07,251 [INFO] Current IST time: 2026-07-10T21:36:07.251171+05:30
+2026-07-10 21:36:07,251 [INFO] ============================================================
+2026-07-10 21:36:07,251 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 21:36:07,252 [INFO] Generating tweet via OpenRouter...
+2026-07-10 21:36:07,252 [INFO] Attempt 1/3 — style=tip, temp=1.03, target_len=126, examples=10
+2026-07-10 21:36:07,252 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 21:36:10,237 [WARNING] Model openai/gpt-oss-120b:free rate-limited (429). Retry after 20s.
+2026-07-10 21:36:10,238 [INFO]   Rate-limited. Waiting 20s before retrying openai/gpt-oss-120b:free...
+2026-07-10 21:38:56,179 [INFO] ============================================================
+2026-07-10 21:38:56,179 [INFO] Twitter bot starting up
+2026-07-10 21:38:56,179 [INFO] Dry run mode: True
+2026-07-10 21:38:56,180 [INFO] Model: openai/gpt-oss-120b:free
+2026-07-10 21:38:56,180 [INFO] Current IST time: 2026-07-10T21:38:56.180292+05:30
+2026-07-10 21:38:56,180 [INFO] ============================================================
+2026-07-10 21:38:56,182 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 21:38:56,182 [INFO] Generating tweet via OpenRouter...
+2026-07-10 21:38:56,183 [INFO] Attempt 1/3 — style=story, temp=0.79, target_len=237, examples=8
+2026-07-10 21:38:56,183 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 21:38:58,034 [INFO] Generated (113 chars): Realized I've been using Vim for 5 years and still can't use it properly, just e...
+2026-07-10 21:38:58,034 [INFO] Final content (113 chars): Realized I've been using Vim for 5 years and still can't use it properly, just efficiently. There's a difference.
+2026-07-10 21:38:58,034 [INFO] Posting tweet via twikit...
+2026-07-10 21:38:58,057 [INFO] [DRY RUN] Would have posted: Realized I've been using Vim for 5 years and still can't use it properly, just efficiently. There's a difference.
+2026-07-10 21:38:58,058 [INFO] Verifying tweet visibility...
+2026-07-10 21:38:58,058 [INFO] [DRY RUN] Skipping verification
+2026-07-10 21:38:58,059 [INFO] [Telegram disabled] *Posted successfully!*
+
+*Tweet ID:* `dry-run-id`
+*Content:*
+Realized I've been using Vim for 5 years and still can't use it properly, just efficiently. There's a difference.
+
+View: https://x.com/i/status/dry-run-id
+2026-07-10 21:38:58,059 [INFO] Pipeline complete — tweet posted and verified
+2026-07-10 21:40:16,151 [INFO] ============================================================
+2026-07-10 21:40:16,151 [INFO] Twitter bot starting up
+2026-07-10 21:40:16,151 [INFO] Dry run mode: False
+2026-07-10 21:40:16,152 [INFO] Model: openai/gpt-oss-120b:free
+2026-07-10 21:40:16,152 [INFO] Current IST time: 2026-07-10T21:40:16.152205+05:30
+2026-07-10 21:40:16,152 [INFO] ============================================================
+2026-07-10 21:40:16,152 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 21:40:16,153 [INFO] Generating tweet via OpenRouter...
+2026-07-10 21:40:16,153 [INFO] Attempt 1/3 — style=contrarian, temp=0.83, target_len=256, examples=8
+2026-07-10 21:40:16,153 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 21:40:19,424 [INFO] Generated (174 chars): Not convinced that every company needs an AI strategy, sounds like a solution in...
+2026-07-10 21:40:19,424 [INFO] Final content (174 chars): Not convinced that every company needs an AI strategy, sounds like a solution in search of a problem, most businesses still can't get the basics of software development right
+2026-07-10 21:40:19,425 [INFO] Posting tweet via twikit...
+2026-07-10 21:40:22,600 [ERROR] Failed to set cookies: too many values to unpack (expected 2, got 6)
+2026-07-10 21:40:22,601 [ERROR] twikit posting failed
+2026-07-10 21:40:22,601 [INFO] [Telegram disabled] *Post failed*
+
+*Reason:* twikit posting failed
+
+*Generated content was:*
+Not convinced that every company needs an AI strategy, sounds like a solution in search of a problem, most businesses still can't get the basics of software development right
+2026-07-10 21:43:29,021 [INFO] ============================================================
+2026-07-10 21:43:29,021 [INFO] Twitter bot starting up
+2026-07-10 21:43:29,021 [INFO] Dry run mode: False
+2026-07-10 21:43:29,021 [INFO] Model: openai/gpt-oss-120b:free
+2026-07-10 21:43:29,021 [INFO] Current IST time: 2026-07-10T21:43:29.021863+05:30
+2026-07-10 21:43:29,022 [INFO] ============================================================
+2026-07-10 21:43:29,022 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 21:43:29,022 [INFO] Generating tweet via OpenRouter...
+2026-07-10 21:43:29,023 [INFO] Attempt 1/3 — style=story, temp=1.12, target_len=155, examples=10
+2026-07-10 21:43:29,023 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 21:43:30,809 [INFO] Generated (135 chars): Spent 2 days trying to fix a model that was underperforming, only to realize I'd...
+2026-07-10 21:43:30,810 [INFO] Final content (135 chars): Spent 2 days trying to fix a model that was underperforming, only to realize I'd been validating on the test set, not the training set.
+2026-07-10 21:43:30,810 [INFO] Posting tweet via twikit...
+2026-07-10 21:43:33,746 [ERROR] Failed to set cookies: too many values to unpack (expected 2, got 6)
+2026-07-10 21:43:33,747 [ERROR] twikit posting failed
+2026-07-10 21:43:33,747 [INFO] [Telegram disabled] *Post failed*
+
+*Reason:* twikit posting failed
+
+*Generated content was:*
+Spent 2 days trying to fix a model that was underperforming, only to realize I'd been validating on the test set, not the training set.
+2026-07-10 21:50:36,796 [INFO] ============================================================
+2026-07-10 21:50:36,797 [INFO] Twitter bot starting up
+2026-07-10 21:50:36,797 [INFO] Dry run mode: False
+2026-07-10 21:50:36,797 [INFO] Model: openai/gpt-oss-120b:free
+2026-07-10 21:50:36,798 [INFO] Current IST time: 2026-07-10T21:50:36.798011+05:30
+2026-07-10 21:50:36,798 [INFO] ============================================================
+2026-07-10 21:50:36,798 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 21:50:36,798 [INFO] Generating tweet via OpenRouter...
+2026-07-10 21:50:36,799 [INFO] Attempt 1/3 — style=data_point, temp=0.89, target_len=170, examples=10
+2026-07-10 21:50:36,799 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 21:50:38,582 [INFO] Generated (131 chars): 75% of my codebase is legacy code from the first 6 months of the project, still ...
+2026-07-10 21:50:38,582 [INFO] Final content (131 chars): 75% of my codebase is legacy code from the first 6 months of the project, still functional but utterly baffling to my current self.
+2026-07-10 21:50:38,582 [INFO] Posting tweet via twikit...
+2026-07-10 21:50:41,013 [ERROR] No cookies found. Run: python bot.py import-cookies
+2026-07-10 21:50:41,014 [ERROR] twikit posting failed
+2026-07-10 21:50:41,014 [INFO] [Telegram disabled] *Post failed*
+
+*Reason:* twikit posting failed
+
+*Generated content was:*
+75% of my codebase is legacy code from the first 6 months of the project, still functional but utterly baffling to my current self.
+2026-07-10 21:54:02,899 [INFO] ============================================================
+2026-07-10 21:54:02,899 [INFO] Twitter bot starting up
+2026-07-10 21:54:02,900 [INFO] Dry run mode: False
+2026-07-10 21:54:02,900 [INFO] Model: openai/gpt-oss-120b:free
+2026-07-10 21:54:02,900 [INFO] Current IST time: 2026-07-10T21:54:02.900600+05:30
+2026-07-10 21:54:02,900 [INFO] ============================================================
+2026-07-10 21:54:02,901 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 21:54:02,901 [INFO] Generating tweet via OpenRouter...
+2026-07-10 21:54:02,902 [INFO] Attempt 1/3 — style=prediction, temp=1.02, target_len=139, examples=10
+2026-07-10 21:54:02,902 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 21:54:04,762 [INFO] Generated (138 chars): By 2029 most new programming languages will be designed with AI-assisted coding ...
+2026-07-10 21:54:04,762 [INFO] Final content (138 chars): By 2029 most new programming languages will be designed with AI-assisted coding in mind, making human-readable syntax a secondary concern.
+2026-07-10 21:54:04,762 [INFO] Posting tweet via twikit...
+2026-07-10 21:54:07,143 [INFO] Loaded cookies successfully
+2026-07-10 21:54:08,869 [INFO] Posting tweet (138 chars)...
+2026-07-10 21:54:10,053 [ERROR] Failed to post tweet: Exception: Couldn't get KEY_BYTE indices
+2026-07-10 21:54:10,055 [ERROR] twikit posting failed
+2026-07-10 21:54:10,055 [INFO] [Telegram disabled] *Post failed*
+
+*Reason:* twikit posting failed
+
+*Generated content was:*
+By 2029 most new programming languages will be designed with AI-assisted coding in mind, making human-readable syntax a secondary concern.
+2026-07-10 21:57:36,227 [INFO] ============================================================
+2026-07-10 21:57:36,228 [INFO] Twitter bot starting up
+2026-07-10 21:57:36,228 [INFO] Dry run mode: False
+2026-07-10 21:57:36,228 [INFO] Model: openai/gpt-oss-120b:free
+2026-07-10 21:57:36,228 [INFO] Current IST time: 2026-07-10T21:57:36.228752+05:30
+2026-07-10 21:57:36,228 [INFO] ============================================================
+2026-07-10 21:57:36,229 [INFO] Daily cap reached (8/8). Skipping.
+2026-07-10 22:05:23,665 [INFO] ============================================================
+2026-07-10 22:05:23,666 [INFO] Twitter bot starting up
+2026-07-10 22:05:23,666 [INFO] Dry run mode: False
+2026-07-10 22:05:23,666 [INFO] Model: openai/gpt-oss-120b:free
+2026-07-10 22:05:23,666 [INFO] Current IST time: 2026-07-10T22:05:23.666915+05:30
+2026-07-10 22:05:23,667 [INFO] ============================================================
+2026-07-10 22:05:23,667 [INFO] Daily cap reached (8/8). Skipping.
+2026-07-10 22:06:52,895 [INFO] ============================================================
+2026-07-10 22:06:52,895 [INFO] Twitter bot starting up
+2026-07-10 22:06:52,895 [INFO] Dry run mode: False
+2026-07-10 22:06:52,895 [INFO] Model: openai/gpt-oss-120b:free
+2026-07-10 22:06:52,896 [INFO] Current IST time: 2026-07-10T22:06:52.896121+05:30
+2026-07-10 22:06:52,896 [INFO] ============================================================
+2026-07-10 22:06:52,896 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 22:06:52,897 [INFO] Generating tweet via OpenRouter...
+2026-07-10 22:06:52,897 [INFO] Attempt 1/3 — style=prediction, temp=1.12, target_len=173, examples=10
+2026-07-10 22:06:52,897 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 22:06:55,165 [INFO] Generated (182 chars): By 2028, we'll see the rise of 'prompt engineers' who craft high-performing LLM ...
+2026-07-10 22:06:55,167 [INFO] Final content (182 chars): By 2028, we'll see the rise of 'prompt engineers' who craft high-performing LLM inputs as a full-time job, separating the skill of writing code from the skill of talking to machines.
+2026-07-10 22:06:55,167 [INFO] Posting tweet via twikit...
+2026-07-10 22:07:33,188 [ERROR] Playwright posting failed: 
+2026-07-10 22:07:33,188 [ERROR] stdout: Loaded 12 cookies
+Tweet content (182 chars): By 2028, we'll see the rise of 'prompt engineers' who craft high-performing LLM ...
+Browser mode: visible
+
+[1/6] Navigating to x.com...
+ERROR: TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://x.com/home", waiting until "networkidle"
+
+Screenshot saved to: F:\x-automation v2\logs\error_screenshot.png
+
+=== FAILED ===
+
+2026-07-10 22:07:33,189 [ERROR] twikit posting failed
+2026-07-10 22:07:33,189 [INFO] [Telegram disabled] *Post failed*
+
+*Reason:* twikit posting failed
+
+*Generated content was:*
+By 2028, we'll see the rise of 'prompt engineers' who craft high-performing LLM inputs as a full-time job, separating the skill of writing code from the skill of talking to machines.
+2026-07-10 22:18:41,672 [INFO] ============================================================
+2026-07-10 22:18:41,672 [INFO] Twitter bot starting up
+2026-07-10 22:18:41,672 [INFO] Dry run mode: False
+2026-07-10 22:18:41,672 [INFO] Model: openai/gpt-oss-120b:free
+2026-07-10 22:18:41,672 [INFO] Current IST time: 2026-07-10T22:18:41.672956+05:30
+2026-07-10 22:18:41,673 [INFO] ============================================================
+2026-07-10 22:18:41,673 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 22:18:41,673 [INFO] Generating tweet via OpenRouter...
+2026-07-10 22:18:41,674 [INFO] Attempt 1/3 — style=hot_take, temp=1.06, target_len=114, examples=6
+2026-07-10 22:18:41,674 [INFO]   Provider: Groq | Model: llama-3.3-70b-versatile
+2026-07-10 22:18:43,596 [INFO] Generated (120 chars): Most dev work isn't coding, it's navigation – finding the right libraries, setti...
+2026-07-10 22:18:43,597 [INFO] Final content (120 chars): Most dev work isn't coding, it's navigation – finding the right libraries, settings, and workarounds to get things done.
+2026-07-10 22:18:43,597 [INFO] Posting tweet via twikit...
+2026-07-10 22:18:46,582 [ERROR] No cookies found. Run: python bot.py import-cookies
+2026-07-10 22:18:46,584 [ERROR] twikit posting failed
+2026-07-10 22:18:46,584 [INFO] [Telegram disabled] *Post failed*
+
+*Reason:* twikit posting failed
+
+*Generated content was:*
+Most dev work isn't coding, it's navigation – finding the right libraries, settings, and workarounds to get things done.
+2026-07-10 22:19:08,482 [INFO] ============================================================
+2026-07-10 22:19:08,482 [INFO] Twitter bot starting up
+2026-07-10 22:19:08,483 [INFO] Dry run mode: False
+2026-07-10 22:19:08,483 [INFO] Model: openai/gpt-oss-120b:free
+2026-07-10 22:19:08,484 [INFO] Current IST time: 2026-07-10T22:19:08.484026+05:30
+2026-07-10 22:19:08,484 [INFO] ============================================================
+2026-07-10 22:19:08,484 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 22:19:08,485 [INFO] Generating tweet via OpenRouter...
+2026-07-10 22:19:08,485 [INFO] Attempt 1/3 — style=prediction, temp=0.88, target_len=215, examples=8
+2026-07-10 22:19:08,485 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 22:19:10,114 [INFO] Generated (168 chars): Within 2 years most new SaaS apps will have AI-generated core features, not just...
+2026-07-10 22:19:10,114 [INFO] Final content (168 chars): Within 2 years most new SaaS apps will have AI-generated core features, not just auxiliary ones, and it's going to upend the entire notion of a "minimum viable product"
+2026-07-10 22:19:10,114 [INFO] Posting tweet via twikit...
+2026-07-10 22:19:36,599 [ERROR] Playwright posting failed: 
+2026-07-10 22:19:36,600 [ERROR] twikit posting failed
+2026-07-10 22:19:36,600 [INFO] [Telegram disabled] *Post failed*
+
+*Reason:* twikit posting failed
+
+*Generated content was:*
+Within 2 years most new SaaS apps will have AI-generated core features, not just auxiliary ones, and it's going to upend the entire notion of a "minimum viable product"
+2026-07-10 22:30:27,939 [INFO] ============================================================
+2026-07-10 22:30:27,939 [INFO] Twitter bot starting up
+2026-07-10 22:30:27,940 [INFO] Dry run mode: False
+2026-07-10 22:30:27,940 [INFO] Model: openai/gpt-oss-120b:free
+2026-07-10 22:30:27,940 [INFO] Current IST time: 2026-07-10T22:30:27.940497+05:30
+2026-07-10 22:30:27,940 [INFO] ============================================================
+2026-07-10 22:30:27,941 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 22:30:27,941 [INFO] Generating tweet via OpenRouter...
+2026-07-10 22:30:27,942 [INFO] Attempt 1/3 — style=question, temp=0.86, target_len=131, examples=9
+2026-07-10 22:30:27,942 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 22:30:30,279 [INFO] Generated (91 chars): What's the smallest code change that's ever had a massive impact on your project...
+2026-07-10 22:30:30,280 [INFO] Final content (91 chars): What's the smallest code change that's ever had a massive impact on your project's success?
+2026-07-10 22:30:30,280 [INFO] Posting tweet via twikit...
+2026-07-10 22:30:50,349 [ERROR] Playwright posting failed: 
+2026-07-10 22:30:50,350 [ERROR] stdout: Loaded 12 cookies
+Tweet content (91 chars): What's the smallest code change that's ever had a massive impact on your project...
+Browser mode: visible
+
+[1/6] Navigating to x.com...
+[1/6] Logged in successfully
+[2/6] Opening compose tweet dialog...
+ERROR: TimeoutError: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("div[role=\"dialog\"]") to be visible
+    21  locator resolved to 2 elements. Proceeding with the first one: <div role="dialog" class="css
+2026-07-10 22:30:50,351 [ERROR] twikit posting failed
+2026-07-10 22:30:50,351 [INFO] [Telegram disabled] *Post failed*
+
+*Reason:* twikit posting failed
+
+*Generated content was:*
+What's the smallest code change that's ever had a massive impact on your project's success?
+2026-07-10 22:35:00,398 [INFO] ============================================================
+2026-07-10 22:35:00,398 [INFO] Twitter bot starting up
+2026-07-10 22:35:00,399 [INFO] Dry run mode: False
+2026-07-10 22:35:00,399 [INFO] Model: openai/gpt-oss-120b:free
+2026-07-10 22:35:00,400 [INFO] Current IST time: 2026-07-10T22:35:00.400023+05:30
+2026-07-10 22:35:00,400 [INFO] ============================================================
+2026-07-10 22:35:00,400 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 22:35:00,400 [INFO] Generating tweet via OpenRouter...
+2026-07-10 22:35:00,401 [INFO] Attempt 1/3 — style=tip, temp=0.88, target_len=85, examples=9
+2026-07-10 22:35:00,401 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 22:35:02,253 [INFO] Generated (140 chars): Wish more devs knew about Python's breakpoint() function - insert it and your co...
+2026-07-10 22:35:02,253 [INFO] Final content (140 chars): Wish more devs knew about Python's breakpoint() function - insert it and your code drops into a REPL at that point, no debugger setup needed
+2026-07-10 22:35:02,253 [INFO] Posting tweet via twikit...
+2026-07-10 22:45:16,054 [INFO] ============================================================
+2026-07-10 22:45:16,076 [INFO] Twitter bot starting up
+2026-07-10 22:45:16,077 [INFO] Dry run mode: False
+2026-07-10 22:45:16,077 [INFO] Model: openai/gpt-oss-120b:free
+2026-07-10 22:45:16,077 [INFO] Current IST time: 2026-07-10T22:45:16.077505+05:30
+2026-07-10 22:45:16,077 [INFO] ============================================================
+2026-07-10 22:45:16,078 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 22:45:16,078 [INFO] Generating tweet via OpenRouter...
+2026-07-10 22:45:16,092 [INFO] Attempt 1/3 — style=tip, temp=0.77, target_len=64, examples=10
+2026-07-10 22:45:16,092 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 22:45:19,909 [INFO] Generated (170 chars): Wish more devs knew about Python's functools module, specifically lru_cache - it...
+2026-07-10 22:45:19,909 [INFO] Final content (170 chars): Wish more devs knew about Python's functools module, specifically lru_cache - it's a one-liner that can shave 90% off your function's execution time by memoizing results.
+2026-07-10 22:45:19,909 [INFO] Posting tweet via twikit...
+2026-07-10 22:46:25,205 [INFO] Tweet posted via Playwright. ID: unknown
+2026-07-10 22:46:25,205 [INFO] Verifying tweet visibility...
+2026-07-10 22:46:25,205 [WARNING] Cannot verify placeholder ID: unknown
+2026-07-10 22:46:25,206 [INFO] [Telegram disabled] *Posted successfully!*
+
+*Tweet ID:* `unknown`
+*Content:*
+Wish more devs knew about Python's functools module, specifically lru_cache - it's a one-liner that can shave 90% off your function's execution time by memoizing results.
+
+View: https://x.com/i/status/unknown
+2026-07-10 22:46:25,207 [INFO] Pipeline complete — tweet posted and verified
+2026-07-10 23:48:00,702 [INFO] ============================================================
+2026-07-10 23:48:00,703 [INFO] Twitter bot starting up
+2026-07-10 23:48:00,703 [INFO] Dry run mode: False
+2026-07-10 23:48:00,703 [INFO] Model: openai/gpt-oss-120b:free
+2026-07-10 23:48:00,704 [INFO] Current IST time: 2026-07-10T23:48:00.704174+05:30
+2026-07-10 23:48:00,704 [INFO] ============================================================
+2026-07-10 23:48:00,704 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 23:48:00,704 [INFO] Generating tweet via OpenRouter...
+2026-07-10 23:48:00,705 [INFO] Attempt 1/3 — style=hot_take, temp=1.12, target_len=135, examples=10
+2026-07-10 23:48:00,705 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 23:48:02,781 [INFO] Generated (162 chars): Most AI demos are just polished failures, masking inherent flaws with clever pro...
+2026-07-10 23:48:02,781 [INFO] Final content (162 chars): Most AI demos are just polished failures, masking inherent flaws with clever prompts and curated datasets, setting unrealistic expectations for actual deployment.
+2026-07-10 23:48:02,782 [INFO] Posting tweet via twikit...
+2026-07-10 23:48:51,066 [INFO] Tweet posted via Playwright. ID: unknown
+2026-07-10 23:48:51,067 [INFO] Verifying tweet visibility...
+2026-07-10 23:48:51,067 [WARNING] Cannot verify placeholder ID: unknown
+2026-07-10 23:48:53,168 [ERROR] Telegram alert failed: Client error '403 Forbidden' for url 'https://api.telegram.org/bot8811380311:AAFgKxcwtUlQsXTPMiA1ZOBXvLM7_yWNOvg/sendMessage'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2026-07-10 23:48:53,171 [INFO] Pipeline complete — tweet posted and verified
+2026-07-10 23:59:07,282 [INFO] ============================================================
+2026-07-10 23:59:07,283 [INFO] Twitter bot starting up
+2026-07-10 23:59:07,283 [INFO] Dry run mode: False
+2026-07-10 23:59:07,283 [INFO] Model: openai/gpt-oss-120b:free
+2026-07-10 23:59:07,283 [INFO] Current IST time: 2026-07-10T23:59:07.283734+05:30
+2026-07-10 23:59:07,283 [INFO] ============================================================
+2026-07-10 23:59:07,284 [INFO] Skipping jitter (SKIP_JITTER=1) — testing mode
+2026-07-10 23:59:07,284 [INFO] Generating tweet via OpenRouter...
+2026-07-10 23:59:07,285 [INFO] Attempt 1/3 — style=hot_take, temp=1.05, target_len=260, examples=8
+2026-07-10 23:59:07,285 [INFO]   Using model: openai/gpt-oss-120b:free
+2026-07-10 23:59:09,483 [INFO] Generated (177 chars): The myth that every startup needs a CTO is fading fast, thanks to no-code tools ...
+2026-07-10 23:59:09,483 [INFO] Final content (177 chars): The myth that every startup needs a CTO is fading fast, thanks to no-code tools and cloud services that abstract away the plumbing, letting founders focus on the actual product.
+2026-07-10 23:59:09,483 [INFO] Posting tweet via twikit...
+2026-07-11 00:00:05,458 [INFO] Tweet posted via Playwright. ID: unknown
+2026-07-11 00:00:05,459 [INFO] Verifying tweet visibility...
+2026-07-11 00:00:05,459 [WARNING] Cannot verify placeholder ID: unknown
+2026-07-11 00:00:07,220 [INFO] Telegram alert sent (success)
+2026-07-11 00:00:07,222 [INFO] Pipeline complete — tweet posted and verified

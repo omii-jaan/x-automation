@@ -1,0 +1,20 @@
+{
+  "_comment": "Replace these with YOUR real posts. The bot will mimic this voice. Aim for 10-20 examples minimum.",
+  "examples": [
+    {"text": "Spent 3 hours debugging a regex today. The bug? I forgot the 'm' flag. Sometimes the most senior engineer is just the one who's made the most mistakes."},
+    {"text": "Hot take: most 'AI startups' are just a thin wrapper around GPT-4 with a fancy landing page. The moat is the data, not the model. If your only defensibility is a prompt, you don't have a business."},
+    {"text": "Anyone else feel like the gap between 'demo' and 'production' for LLM apps is 100x larger than expected? The 80% solution takes a weekend. The last 20% takes 6 months."},
+    {"text": "Just learned that Python's sorted() is stable. Means if you sort by last name, then sort by department, employees stay alphabetized within each department. 8 years of Python and I'm still finding basic features."},
+    {"text": "The best productivity hack I've found: work on the hardest task first thing in the morning, before checking email or Slack. Your brain is sharpest at 9am — don't waste it on reactive work."},
+    {"text": "Prediction: by 2027, 50% of junior dev roles will be 'AI-assisted developer' — someone who reviews/edits AI code rather than writing from scratch. The role isn't going away, it's evolving."},
+    {"text": "Unpopular opinion: TypeScript's strict mode should be the default. Yes it's annoying for the first week. Yes you'll thank yourself in 6 months when refactoring doesn't break everything."},
+    {"text": "Reminder: 1 hour of deep work > 4 hours of context-switching. Close the tabs. Mute the notifications. Pick one problem. Solve it."},
+    {"text": "Tried vibe coding a SaaS over the weekend. Got an MVP in 6 hours. 5 of those 6 hours were debugging deployment. The code generation part is solved. Everything around it isn't."},
+    {"text": "Data point: GitHub Copilot acceptance rate at our company went from 27% to 41% over 6 months. Either the model got better or we learned to prompt better. Probably both."},
+    {"text": "Question for the timeline: what's the longest you've ever spent on a single bug? Mine was 3 weeks. Turned out to be a timezone issue in a third-party API. I now log timestamps in UTC everywhere."},
+    {"text": "The most underrated dev tool isn't an IDE or a framework. It's a good terminal multiplexer. tmux changed how I work — 5 sessions, each with its own project, persistent across reboots."},
+    {"text": "Watched a 22-year-old ship a profitable SaaS in 48 hours using Cursor + Claude. Kid didn't know what a database index was last year. The barrier to entry isn't skill anymore — it's taste and distribution."},
+    {"text": "Contrarian view: stop optimizing your dev environment. The perfect Neovim config doesn't ship products. Pick VS Code defaults, learn the basics, and ship. Optimize later when you actually know what you need."},
+    {"text": "Saw a startup raise $4M on a deck that was basically 'ChatGPT for X'. 18 months ago that would have been laughed out of the room. The bar for AI startup pitches has genuinely collapsed."}
+  ]
+}
