@@ -12,10 +12,10 @@ Usage:
   5. python bot.py                     (post for real)
 
 SETUP env vars (PowerShell):
-  $env:OPENROUTER_API_KEY="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"
-  $env:X_USERNAME="omfdev"
-  $env:X_EMAIL="omprakashfulsundar08@gmail.com"
-  $env:X_PASSWORD="727885673IAOM"
+  $env:OPENROUTER_API_KEY="sk-or-v1-..."
+  $env:X_USERNAME="your_username"
+  $env:X_EMAIL="your@email.com"
+  $env:X_PASSWORD="yourpassword"
   $env:TWIKIT_COOKIES="<contents of cookies.json>"
   $env:TELEGRAM_BOT_TOKEN="..."    (optional)
   $env:TELEGRAM_CHAT_ID="..."      (optional)
