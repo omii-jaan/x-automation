@@ -612,7 +612,8 @@ async def fetch_tweet_async(tweet_id: str):
     if not client:
         return None
     try:
-        return await client.get_tweet(tweet_id)
+        # twikit uses get_tweet_by_id, not get_tweet
+        return await client.get_tweet_by_id(tweet_id)
     except Exception as e:
         logger.error(f"Failed to fetch tweet {tweet_id}: {e}")
         return None
