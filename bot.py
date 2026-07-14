@@ -150,7 +150,7 @@ def clean_text(text: str) -> str:
            (text[0] == "'" and text[-1] == "'") or \
            (text[0] == '\u201c' and text[-1] == '\u201d') or \
            (text[0] == '\u2018' and text[-1] == '\u2019'):
-             text = text[1:-1].strip()
+              text = text[1:-1].strip()
     prefixes = [
         "Tweet:", "Post:", "Here's a tweet:", "Here is a tweet:",
         "Sure! ", "Here you go: ", "Generated tweet:", "Output:",
@@ -415,7 +415,6 @@ def call_openrouter(messages: list, temperature: float, model: str = None):
         return None, 20
 
 
-
 def call_groq(messages: list, temperature: float, model: str = None):
     if model is None:
         model = GROQ_MODEL
@@ -458,6 +457,7 @@ def call_ai(messages: list, temperature: float, model: str = None):
         return call_groq(messages, temperature, model=model)
     else:
         return call_openrouter(messages, temperature, model=model)
+
 
 def generate_post(max_retries: int = 5):
     """Generate a tweet using the configured AI provider.
@@ -627,7 +627,7 @@ def post_tweet_sync(content: str):
     import subprocess
     result = subprocess.run(
         [sys.executable, str(PROJECT_ROOT / "post_playwright.py"), content],
-        capture_output=True, timeout=120
+        capture_output=True, timeout=300
     )
     
     # Decode bytes to string, ignoring any bad characters (Windows encoding fix)
