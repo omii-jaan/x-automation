@@ -59,6 +59,7 @@ jobs:
           
           # Workflow Options
           DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '0' }}
+          SKIP_JITTER: "1"
         
         run: |
           python bot.py
