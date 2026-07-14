@@ -150,7 +150,7 @@ def clean_text(text: str) -> str:
            (text[0] == "'" and text[-1] == "'") or \
            (text[0] == '\u201c' and text[-1] == '\u201d') or \
            (text[0] == '\u2018' and text[-1] == '\u2019'):
-            text = text[1:-1].strip()
+             text = text[1:-1].strip()
     prefixes = [
         "Tweet:", "Post:", "Here's a tweet:", "Here is a tweet:",
         "Sure! ", "Here you go: ", "Generated tweet:", "Output:",
@@ -460,12 +460,16 @@ def call_ai(messages: list, temperature: float, model: str = None):
         return call_openrouter(messages, temperature, model=model)
 
 def generate_post(max_retries: int = 5):
-    """Generate a tweet using the single primary model.
-    If rate-limited (429), waits the requested time and retries the SAME model.
+    """Generate a tweet using the configured AI provider.
+    If rate-limited (429), waits the requested time and retries.
     """
-    if not OPENROUTER_API_KEY:
+    if AI_PROVIDER == "groq" and not GROQ_API_KEY:
+        logger.error("GROQ_API_KEY not set")
+        return None
+    if AI_PROVIDER == "openrouter" and not OPENROUTER_API_KEY:
         logger.error("OPENROUTER_API_KEY not set")
         return None
+        
     all_examples = load_examples()
     if not all_examples:
         logger.warning("No examples loaded — using zero-shot")
@@ -481,9 +485,9 @@ def generate_post(max_retries: int = 5):
         ]
         logger.info(f"Attempt {attempt}/{max_retries} — style={style}, temp={temperature}, "
                     f"target_len={target_length}, examples={len(examples)}")
-        logger.info(f"  Using model: {OPENROUTER_MODEL}")
+        logger.info(f"  Using provider: {AI_PROVIDER}")
 
-        raw, retry_after = call_ai(messages, temperature, model=GROQ_MODEL if GROQ_API_KEY else OPENROUTER_MODEL)
+        raw, retry_after = call_ai(messages, temperature)
         if raw:
             content = clean_text(raw)
             content = truncate_to_limit(content, 280)
@@ -494,21 +498,19 @@ def generate_post(max_retries: int = 5):
             else:
                 logger.warning(f"  Content failed validation: {reason}")
                 logger.warning(f"  Rejected: {content[:200]}")
-                # Wait briefly then retry with fresh randomness
                 time.sleep(3)
                 continue
         else:
-            # Rate-limited or error — wait the requested time and retry SAME model
             if retry_after and retry_after > 0:
-                wait = min(retry_after, 40)  # cap at 40s
-                logger.info(f"  Rate-limited. Waiting {wait}s before retrying {OPENROUTER_MODEL}...")
+                wait = min(retry_after, 40)
+                logger.info(f"  Rate-limited. Waiting {wait}s before retrying...")
                 time.sleep(wait)
             else:
                 logger.info(f"  Error. Waiting 10s before retry...")
                 time.sleep(10)
             continue
 
-    logger.error(f"All {max_retries} attempts failed for {OPENROUTER_MODEL}")
+    logger.error(f"All {max_retries} attempts failed")
     return None
 
 
@@ -549,19 +551,6 @@ def load_cookies_from_file():
                 if isinstance(cookie, dict) and "name" in cookie and "value" in cookie:
                     cookies_dict[cookie["name"]] = cookie["value"]
             return cookies_dict if cookies_dict else data
-        return None
-    except (json.JSONDecodeError, IOError) as e:
-        logger.error(f"Could not read cookies file: {e}")
-        return None
-    if not COOKIES_FILE.exists():
-        return None
-    try:
-        with open(COOKIES_FILE, "r") as f:
-            data = json.load(f)
-        if isinstance(data, dict) and "cookies" in data:
-            return data["cookies"]
-        if isinstance(data, list):
-            return data
         return None
     except (json.JSONDecodeError, IOError) as e:
         logger.error(f"Could not read cookies file: {e}")
@@ -749,7 +738,7 @@ def run_bot() -> int:
     logger.info("=" * 60)
     logger.info("Twitter bot starting up")
     logger.info(f"Dry run mode: {DRY_RUN}")
-    logger.info(f"Model: {OPENROUTER_MODEL}")
+    logger.info(f"AI Provider: {AI_PROVIDER}")
     logger.info(f"Current IST time: {get_ist_now().isoformat()}")
     logger.info("=" * 60)
 
@@ -781,7 +770,7 @@ def run_bot() -> int:
         logger.info(f"Applying {jitter}s ({jitter/60:.1f} min) jitter")
         time.sleep(jitter)
 
-    logger.info("Generating tweet via OpenRouter...")
+    logger.info(f"Generating tweet via {AI_PROVIDER.upper()}...")
     content = generate_post(max_retries=3)
     if not content:
         reason = "AI generation failed after retries"
