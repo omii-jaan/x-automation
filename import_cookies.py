@@ -7,7 +7,7 @@ USAGE:
   3. Save the exported JSON as 'browser_cookies.json' in this project folder
   4. Run: python import_cookies.py
   5. If valid, this creates 'cookies.json' in the twikit-compatible format
-  6. Test with: DRY_RUN=1 python main.py
+  6. Test with: DRY_RUN=1 python bot.py
 
 This script:
   - Reads browser-exported cookies (any common format)
@@ -21,8 +21,10 @@ import json
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent))
-import config
+# Project paths
+PROJECT_ROOT = Path(__file__).parent
+BROWSER_COOKIES_FILE = PROJECT_ROOT / "browser_cookies.json"
+COOKIES_FILE = PROJECT_ROOT / "cookies.json"
 
 # Critical cookies X needs for authenticated scraping
 CRITICAL_COOKIES = ["auth_token", "ct0"]
@@ -40,15 +42,14 @@ KEEP_FIELDS = {"name", "value", "domain", "path", "expires", "secure", "httpOnly
 
 def load_browser_cookies() -> list:
     """Load cookies from browser_cookies.json. Handles various export formats."""
-    cookie_file = Path(__file__).parent / "browser_cookies.json"
-    if not cookie_file.exists():
-        print(f"ERROR: {cookie_file} not found.")
+    if not BROWSER_COOKIES_FILE.exists():
+        print(f"ERROR: {BROWSER_COOKIES_FILE} not found.")
         print("Export cookies from your browser's Cookie-Editor extension,")
         print("then save them as 'browser_cookies.json' in this folder.")
         return []
 
     try:
-        with open(cookie_file, "r", encoding="utf-8") as f:
+        with open(BROWSER_COOKIES_FILE, "r", encoding="utf-8") as f:
             data = json.load(f)
     except json.JSONDecodeError as e:
         print(f"ERROR: Could not parse JSON: {e}")
@@ -112,9 +113,9 @@ def validate_cookies(cookies: list) -> tuple[bool, list]:
 
 def save_twikit_cookies(cookies: list) -> None:
     """Save cookies in twikit-compatible format (plain JSON list)."""
-    with open(config.COOKIES_FILE, "w", encoding="utf-8") as f:
+    with open(COOKIES_FILE, "w", encoding="utf-8") as f:
         json.dump(cookies, f, indent=2)
-    print(f"Saved {len(cookies)} cookies to {config.COOKIES_FILE}")
+    print(f"Saved {len(cookies)} cookies to {COOKIES_FILE}")
 
 
 def main():
@@ -172,10 +173,10 @@ def main():
     print("=" * 60)
     print("\nNext steps:")
     print("  1. Test with dry run:")
-    print("     $env:DRY_RUN='1'; python main.py   (PowerShell)")
-    print("     DRY_RUN=1 python main.py            (Linux/Mac)")
+    print("     $env:DRY_RUN='1'; python bot.py   (PowerShell)")
+    print("     DRY_RUN=1 python bot.py            (Linux/Mac)")
     print("  2. If dry run works, post for real:")
-    print("     python main.py")
+    print("     python bot.py")
     print("\nFor GitHub Actions:")
     print("  1. Open cookies.json, copy ALL its contents")
     print("  2. Add a GitHub Secret named TWIKIT_COOKIES with that content")

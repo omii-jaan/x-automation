@@ -165,22 +165,22 @@ async def post_tweet(content: str, headless: bool = False, timeout: int = 120) -
         await page.route("**/*.css", lambda route: route.abort())
         
         try:
-            # Step 1: Navigate to X (use "load" instead of "networkidle" for speed, 90s timeout)
+            # Step 1: Navigate to X (use "domcontentloaded" for faster load, 120s timeout)
             print("\n[1/6] Navigating to x.com...")
-            await page.goto("https://x.com/home", wait_until="load", timeout=90000)
+            await page.goto("https://x.com/home", wait_until="domcontentloaded", timeout=120000)
             
             # Check if we're actually logged in (look for the home feed)
             try:
                 await page.wait_for_selector(
                     'div[data-testid="primaryColumn"]',
-                    timeout=15000
+                    timeout=30000
                 )
             except Exception:
                 # Try alternative selector
                 try:
                     await page.wait_for_selector(
                         'a[data-testid="AppTabBar_Home_Link"]',
-                        timeout=10000
+                        timeout=20000
                     )
                 except Exception:
                     print("ERROR: Not logged in. Cookies may be expired.")
@@ -198,7 +198,7 @@ async def post_tweet(content: str, headless: bool = False, timeout: int = 120) -
             try:
                 compose_button = await page.wait_for_selector(
                     'a[data-testid="SideNav_NewTweet_Button"]',
-                    timeout=8000
+                    timeout=15000
                 )
             except Exception:
                 pass
@@ -208,7 +208,17 @@ async def post_tweet(content: str, headless: bool = False, timeout: int = 120) -
                 try:
                     compose_button = await page.wait_for_selector(
                         'a[data-testid="FloatingActionButton_Container"]',
-                        timeout=5000
+                        timeout=10000
+                    )
+                except Exception:
+                    pass
+            
+            # Fallback: Try the new tweet button in the sidebar
+            if not compose_button:
+                try:
+                    compose_button = await page.wait_for_selector(
+                        'a[href="/compose/tweet"]',
+                        timeout=10000
                     )
                 except Exception:
                     pass
@@ -220,10 +230,21 @@ async def post_tweet(content: str, headless: bool = False, timeout: int = 120) -
             
             await compose_button.click()
             
-            # Wait for the compose dialog to appear
-            try:
-                await page.wait_for_selector('div[role="dialog"]', timeout=8000)
-            except Exception:
+            # Wait for the compose dialog to appear - try multiple selectors
+            dialog_opened = False
+            for selector in [
+                'div[role="dialog"]',
+                'div[data-testid="tweetDialog"]',
+                'div[aria-labelledby="modal-header"]',
+            ]:
+                try:
+                    await page.wait_for_selector(selector, timeout=10000)
+                    dialog_opened = True
+                    break
+                except Exception:
+                    continue
+            
+            if not dialog_opened:
                 print("ERROR: Compose dialog did not open")
                 await browser.close()
                 return None
@@ -232,25 +253,27 @@ async def post_tweet(content: str, headless: bool = False, timeout: int = 120) -
             
             # Step 3: Type the tweet
             print("[3/6] Typing tweet...")
-            try:
-                editor = await page.wait_for_selector(
-                    'div[role="textbox"][data-testid="tweetTextarea_0"]',
-                    timeout=8000
-                )
-            except Exception:
-                # Try alternative selector
+            editor = None
+            for selector in [
+                'div[role="textbox"][data-testid="tweetTextarea_0"]',
+                'div[contenteditable="true"][role="textbox"][data-testid="tweetTextarea_0"]',
+                'div[contenteditable="true"][role="textbox"]',
+                'div[role="textbox"][data-testid="tweetTextarea_0"]',
+            ]:
                 try:
-                    editor = await page.wait_for_selector(
-                        'div[contenteditable="true"][role="textbox"]',
-                        timeout=5000
-                    )
+                    editor = await page.wait_for_selector(selector, timeout=8000)
+                    if editor:
+                        break
                 except Exception:
-                    print("ERROR: Could not find text editor")
-                    await browser.close()
-                    return None
+                    continue
+            
+            if not editor:
+                print("ERROR: Could not find text editor")
+                await browser.close()
+                return None
             
             await editor.click()
-            await asyncio.sleep(0.3)
+            await asyncio.sleep(0.5)
             
             # Type with minimal delays for speed (30ms between keystrokes)
             for char in content:
@@ -261,16 +284,24 @@ async def post_tweet(content: str, headless: bool = False, timeout: int = 120) -
             
             # Step 4: Minimal pause before posting
             print("[4/6] Ready to post...")
-            await asyncio.sleep(0.5)
+            await asyncio.sleep(1.0)
             
             # Step 5: Click the Post button
             print("[5/6] Clicking Post button...")
-            try:
-                post_button = await page.wait_for_selector(
-                    'button[data-testid="tweetButton"]',
-                    timeout=8000
-                )
-            except Exception:
+            post_button = None
+            for selector in [
+                'button[data-testid="tweetButton"]',
+                'button[data-testid="tweetButtonInline"]',
+                'div[role="dialog"] button[data-testid="tweetButton"]',
+            ]:
+                try:
+                    post_button = await page.wait_for_selector(selector, timeout=8000)
+                    if post_button:
+                        break
+                except Exception:
+                    continue
+            
+            if not post_button:
                 print("ERROR: Could not find Post button")
                 await browser.close()
                 return None
@@ -285,13 +316,13 @@ async def post_tweet(content: str, headless: bool = False, timeout: int = 120) -
             await post_button.click()
             print("[5/6] Post button clicked")
             
-            # Step 6: Wait for confirmation (90s max, but usually much faster)
+            # Step 6: Wait for confirmation (120s max, but usually much faster)
             print("[6/6] Waiting for confirmation...")
             try:
                 await page.wait_for_selector(
                     'div[role="dialog"]',
                     state="detached",
-                    timeout=90000
+                    timeout=120000
                 )
                 print("[6/6] Dialog closed — tweet posted!")
             except Exception as e:
@@ -299,7 +330,7 @@ async def post_tweet(content: str, headless: bool = False, timeout: int = 120) -
                 try:
                     toast = await page.wait_for_selector(
                         'div[data-testid="toast"]',
-                        timeout=3000
+                        timeout=5000
                     )
                     toast_text = await toast.text_content()
                     print(f"ERROR: X showed an error: {toast_text}")
@@ -310,6 +341,9 @@ async def post_tweet(content: str, headless: bool = False, timeout: int = 120) -
             
             # Try to grab the tweet URL from notification or URL
             tweet_url = None
+            tweet_id = "unknown"
+            
+            # Method 1: Check for notification link
             try:
                 notif_link = await page.query_selector('a[data-testid="toast"]')
                 if notif_link:
@@ -317,8 +351,25 @@ async def post_tweet(content: str, headless: bool = False, timeout: int = 120) -
             except Exception:
                 pass
             
+            # Method 2: Check URL after posting
+            if not tweet_url:
+                try:
+                    current_url = page.url
+                    if "/status/" in current_url:
+                        tweet_url = current_url
+                except Exception:
+                    pass
+            
+            # Method 3: Check for tweet link in page
+            if not tweet_url:
+                try:
+                    tweet_link = await page.query_selector('a[href*="/status/"]')
+                    if tweet_link:
+                        tweet_url = await tweet_link.get_attribute("href")
+                except Exception:
+                    pass
+            
             # Extract tweet ID
-            tweet_id = "unknown"
             if tweet_url and "/status/" in tweet_url:
                 tweet_id = tweet_url.split("/status/")[-1].split("?")[0].split("/")[0]
             
