@@ -107,7 +107,7 @@ def load_cookies_for_playwright() -> list:
     return cookies
 
 
-async def post_tweet(content: str, headless: bool = False, timeout: int = 60) -> dict:
+async def post_tweet(content: str, headless: bool = False, timeout: int = 120) -> dict:
     """
     Post a tweet using a real browser via Playwright.
     
@@ -152,9 +152,9 @@ async def post_tweet(content: str, headless: bool = False, timeout: int = 60) ->
         page = await context.new_page()
         
         try:
-            # Step 1: Navigate to X
+            # Step 1: Navigate to X (increased timeout to 60s for slow networks)
             print("\n[1/6] Navigating to x.com...")
-            await page.goto("https://x.com/home", wait_until="networkidle", timeout=30000)
+            await page.goto("https://x.com/home", wait_until="networkidle", timeout=60000)
             
             # Check if we're actually logged in (look for the compose tweet button)
             try:
@@ -236,14 +236,14 @@ async def post_tweet(content: str, headless: bool = False, timeout: int = 60) ->
             await post_button.click()
             print("[5/6] Post button clicked")
             
-            # Step 6: Wait for confirmation
+            # Step 6: Wait for confirmation (increased timeout to 60s)
             print("[6/6] Waiting for confirmation...")
             # The dialog should close when the tweet is posted
             try:
                 await page.wait_for_selector(
                     'div[role="dialog"]',
                     state="detached",
-                    timeout=30000
+                    timeout=60000
                 )
                 print("[6/6] Dialog closed — tweet posted!")
             except Exception:
