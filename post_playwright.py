@@ -362,7 +362,7 @@ if __name__ == "__main__":
     
     headless_mode = "--headless" in sys.argv
     args = [a for a in sys.argv[1:] if a != "--headless"]
-    tweet_content = " ".join(args)
+    tweet_content = " ".join(args) 
     
     if not tweet_content:
         print("ERROR: No tweet content provided")
