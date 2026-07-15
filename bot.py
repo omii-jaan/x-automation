@@ -640,6 +640,8 @@ def post_tweet_sync(content: str):
         for line in stdout_text.strip().split("\n"):
             if "Tweet ID:" in line:
                 tweet_id = line.split("Tweet ID:")[1].strip()
+                # Ensure no trailing newlines or whitespace in tweet_id
+                tweet_id = tweet_id.strip()
                 logger.info(f"Tweet posted via Playwright. ID: {tweet_id}")
                 return {"id": tweet_id, "text": content}
         # If no ID found but return code is 0, assume success
