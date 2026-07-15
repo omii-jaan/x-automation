@@ -405,12 +405,146 @@ def post_tweet_sync(content: str, headless: bool = False) -> dict:
     return asyncio.run(post_tweet(content, headless=headless))
 
 
+async def verify_tweet(tweet_id: str, headless: bool = False, timeout: int = 60) -> bool:
+    """Verify a tweet is publicly visible by navigating to its URL."""
+    cookies = load_cookies_for_playwright()
+    if not cookies:
+        print("ERROR: No cookies loaded. Cannot verify.")
+        return False
+    
+    tweet_url = f"https://x.com/i/status/{tweet_id}"
+    print(f"Verifying tweet: {tweet_url}")
+    print(f"Browser mode: {'headless' if headless else 'visible'}")
+    
+    async with async_playwright() as p:
+        browser = await p.chromium.launch(
+            headless=headless,
+            args=[
+                "--disable-blink-features=AutomationControlled",
+                "--no-sandbox",
+                "--disable-web-security",
+                "--disable-gpu",
+                "--disable-dev-shm-usage",
+                "--disable-extensions",
+                "--disable-plugins",
+                "--disable-sync",
+                "--metrics-recording-only",
+                "--mute-audio",
+                "--disable-default-apps",
+            ]
+        )
+        
+        context = await browser.new_context(
+            viewport={"width": 1280, "height": 800},
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            locale="en-US",
+            ignore_https_errors=True,
+        )
+        
+        await context.add_cookies(cookies)
+        page = await context.new_page()
+        
+        # Disable images and CSS for speed
+        await page.route("**/*.{png,jpg,jpeg,gif,webp,svg}", lambda route: route.abort())
+        await page.route("**/*.css", lambda route: route.abort())
+        
+        try:
+            # Navigate to tweet URL
+            await page.goto(tweet_url, wait_until="domcontentloaded", timeout=timeout * 1000)
+            
+            # Wait for tweet content to load - try multiple selectors
+            tweet_found = False
+            for selector in [
+                'article[data-testid="tweet"]',
+                'div[data-testid="tweetText"]',
+                'div[role="article"]',
+                'article[role="article"]',
+            ]:
+                try:
+                    await page.wait_for_selector(selector, timeout=15000)
+                    tweet_found = True
+                    break
+                except Exception:
+                    continue
+            
+            if not tweet_found:
+                # Check if we got a "Tweet not available" or similar message
+                try:
+                    error_text = await page.text_content("body")
+                    if error_text and ("not available" in error_text.lower() or "doesn't exist" in error_text.lower() or "deleted" in error_text.lower()):
+                        print("Tweet appears to be deleted or unavailable")
+                        await browser.close()
+                        return False
+                except Exception:
+                    pass
+                print("ERROR: Could not find tweet content on page")
+                await browser.close()
+                return False
+            
+            # Verify the tweet is actually visible (not shadowbanned)
+            # Check if tweet text element is visible
+            try:
+                tweet_element = await page.query_selector('article[data-testid="tweet"]')
+                if tweet_element:
+                    is_visible = await tweet_element.is_visible()
+                    if not is_visible:
+                        print("Tweet element found but not visible (possible shadowban)")
+                        await browser.close()
+                        return False
+            except Exception:
+                pass
+            
+            print(f"SUCCESS: Tweet {tweet_id} is publicly visible")
+            await browser.close()
+            return True
+            
+        except Exception as e:
+            print(f"ERROR during verification: {type(e).__name__}: {e}")
+            try:
+                screenshot_path = Path(__file__).parent / "logs" / "verify_error_screenshot.png"
+                screenshot_path.parent.mkdir(exist_ok=True)
+                await page.screenshot(path=str(screenshot_path))
+                print(f"Screenshot saved to: {screenshot_path}")
+            except Exception:
+                pass
+            await browser.close()
+            return False
+
+
+def verify_tweet_sync(tweet_id: str, headless: bool = False) -> bool:
+    """Synchronous wrapper for verify_tweet."""
+    import os
+    if os.environ.get("GITHUB_ACTIONS") == "true" or (os.name == "posix" and not os.environ.get("DISPLAY")):
+        headless = True
+    return asyncio.run(verify_tweet(tweet_id, headless=headless))
+
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: python post_playwright.py \"Your tweet text\"")
         print("       python post_playwright.py --headless \"Your tweet text\"")
+        print("       python post_playwright.py --verify TWEET_ID")
         sys.exit(1)
     
+    # Check for verify mode
+    if "--verify" in sys.argv:
+        try:
+            idx = sys.argv.index("--verify")
+            tweet_id = sys.argv[idx + 1]
+        except (ValueError, IndexError):
+            print("ERROR: --verify requires a tweet ID")
+            sys.exit(1)
+        
+        headless_mode = "--headless" in sys.argv
+        result = verify_tweet_sync(tweet_id, headless=headless_mode)
+        if result:
+            print("\n=== VERIFICATION SUCCESS ===")
+            sys.exit(0)
+        else:
+            print("\n=== VERIFICATION FAILED ===")
+            sys.exit(1)
+    
+    # Normal post mode
     headless_mode = "--headless" in sys.argv
     args = [a for a in sys.argv[1:] if a != "--headless"]
     tweet_content = " ".join(args) 

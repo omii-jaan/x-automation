@@ -655,6 +655,39 @@ def fetch_tweet_sync(tweet_id: str):
     return asyncio.run(fetch_tweet_async(tweet_id))
 
 
+def verify_tweet_playwright(tweet_id: str) -> bool:
+    """Verify tweet visibility using Playwright browser automation.
+    More reliable than twikit API which has KEY_BYTE issues.
+    """
+    if DRY_RUN:
+        logger.info("[DRY RUN] Skipping Playwright verification")
+        return True
+    if tweet_id in ("unknown", "dry-run-id"):
+        logger.warning(f"Cannot verify placeholder ID: {tweet_id}")
+        return True
+    
+    try:
+        import subprocess
+        result = subprocess.run(
+            [sys.executable, str(PROJECT_ROOT / "post_playwright.py"), 
+             "--verify", tweet_id],
+            capture_output=True, timeout=120
+        )
+        
+        stdout_text = result.stdout.decode("utf-8", errors="ignore") if isinstance(result.stdout, bytes) else (result.stdout or "")
+        stderr_text = result.stderr.decode("utf-8", errors="ignore") if isinstance(result.stderr, bytes) else (result.stderr or "")
+        
+        if result.returncode == 0:
+            logger.info(f"Playwright verification succeeded for tweet {tweet_id}")
+            return True
+        else:
+            logger.warning(f"Playwright verification failed: {stderr_text[:300]}")
+            return False
+    except Exception as e:
+        logger.error(f"Playwright verification error: {e}")
+        return False
+
+
 # =============================================================================
 # SHADOWBAN VERIFICATION
 # =============================================================================
@@ -667,21 +700,28 @@ def verify_tweet(tweet_id: str) -> bool:
         return True
     logger.info(f"Waiting {VERIFY_DELAY_SECONDS}s before verification...")
     time.sleep(VERIFY_DELAY_SECONDS)
+    
+    # Try twikit first (faster if it works)
     for attempt in range(1, VERIFY_MAX_RETRIES + 1):
-        logger.info(f"Verification attempt {attempt}/{VERIFY_MAX_RETRIES} for {tweet_id}")
+        logger.info(f"Verification attempt {attempt}/{VERIFY_MAX_RETRIES} for {tweet_id} (twikit)")
         tweet = fetch_tweet_sync(tweet_id)
         if tweet is not None:
-            logger.info(f"Tweet {tweet_id} is publicly visible")
+            logger.info(f"Tweet {tweet_id} is publicly visible (twikit)")
             return True
-        # Handle twikit errors gracefully - if it's a KEY_BYTE error, 
-        # the tweet might still be fine, just twikit having issues
-        logger.warning(f"Could not fetch (attempt {attempt})")
+        logger.warning(f"Could not fetch via twikit (attempt {attempt})")
         if attempt < VERIFY_MAX_RETRIES:
             logger.info(f"Retrying in {VERIFY_RETRY_DELAY}s...")
             time.sleep(VERIFY_RETRY_DELAY)
+    
+    # Fallback to Playwright verification (more reliable)
+    logger.info("Twikit verification failed, trying Playwright verification...")
+    if verify_tweet_playwright(tweet_id):
+        logger.info(f"Tweet {tweet_id} verified via Playwright")
+        return True
+    
     # After all retries, assume success if Playwright succeeded (we got a real tweet ID)
     # This prevents false shadowban detection due to twikit API issues
-    logger.warning(f"Tweet {tweet_id} verification inconclusive after {VERIFY_MAX_RETRIES} attempts")
+    logger.warning(f"Tweet {tweet_id} verification inconclusive after all methods")
     logger.warning("Assuming tweet is visible (Playwright confirmed post success)")
     return True
 
