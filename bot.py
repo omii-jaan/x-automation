@@ -743,14 +743,13 @@ def escape_markdown(text: str) -> str:
 
 
 def send_alert(message: str, level: str = "info") -> bool:
+    """Send alert to Telegram. Message should already be properly escaped for MarkdownV2."""
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
         logger.info(f"[Telegram disabled] {message}")
         return False
     emoji_map = {"info": "ℹ️", "success": "✅", "warning": "⚠️", "error": "🚨"}
     emoji = emoji_map.get(level, "ℹ️")
     full = f"{emoji} *Twitter Bot Alert*\n\n{message}"
-    # Escape the full message for MarkdownV2
-    full = escape_markdown(full)
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     payload = {"chat_id": TELEGRAM_CHAT_ID, "text": full, "parse_mode": "MarkdownV2"}
     try:
