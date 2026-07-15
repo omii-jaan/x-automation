@@ -693,8 +693,9 @@ def escape_markdown(text: str) -> str:
     """Escape special Markdown characters for Telegram."""
     if not text:
         return ""
-    # Escape characters that have special meaning in Telegram Markdown
-    chars = ['_', '*', '[', ']', '(', ')', '~', '`', '>', '#', '+', '-', '=', '|', '{', '}', '.', '!']
+    # Escape characters that have special meaning in Telegram MarkdownV2
+    # Note: < and > are NOT escaped - they're used for URL formatting <https://...>
+    chars = ['_', '*', '[', ']', '(', ')', '~', '`', '#', '+', '-', '=', '|', '{', '}', '.', '!']
     for char in chars:
         text = text.replace(char, f'\\{char}')
     return text
