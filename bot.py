@@ -728,7 +728,7 @@ def alert_success(content: str, tweet_id: str):
         f"*Posted successfully\\!*\n\n"
         f"*Tweet ID:* `{tweet_id}`\n"
         f"*Content:*\n{safe_content}\n\n"
-        f"View: https://x\\.com/i/status/{tweet_id}",
+        f"View: <https://x\\.com/i/status/{tweet_id}>",
         level="success"
     )
 
