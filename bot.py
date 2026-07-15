@@ -767,7 +767,8 @@ def send_alert(message: str, level: str = "info") -> bool:
 
 def alert_success(content: str, tweet_id: str):
     safe_content = escape_markdown(content)
-    tweet_id = tweet_id.strip()  # Defensive strip to remove any trailing newlines
+    # Extract only digits from tweet_id to remove any invisible characters/newlines
+    tweet_id = ''.join(filter(str.isdigit, tweet_id))
     url = f"<https://x.com/i/status/{tweet_id}>"
     message = escape_markdown(f"*Posted successfully!*\n\n*Tweet ID:* `{tweet_id}`\n\n*Content:*\n{safe_content}\n\nView: {url}")
     send_alert(message, level="success")
