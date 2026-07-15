@@ -766,13 +766,9 @@ def send_alert(message: str, level: str = "info") -> bool:
 
 def alert_success(content: str, tweet_id: str):
     safe_content = escape_markdown(content)
-    send_alert(
-        f"*Posted successfully\\!*\n\n"
-        f"*Tweet ID:* `{tweet_id}`\n"
-        f"*Content:*\n{safe_content}\n\n"
-        f"View: <https://x\\.com/i/status/{tweet_id}>",
-        level="success"
-    )
+    url = f"<https://x.com/i/status/{tweet_id}>"
+    message = f"*Posted successfully\\!*\n\n*Tweet ID:* `{tweet_id}`\n\n*Content:*\n{safe_content}\n\nView: {url}"
+    send_alert(message, level="success")
 
 
 def alert_failure(reason: str, content: str = ""):
