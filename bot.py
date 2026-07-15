@@ -766,7 +766,7 @@ def send_alert(message: str, level: str = "info") -> bool:
 def alert_success(content: str, tweet_id: str):
     safe_content = escape_markdown(content)
     url = f"<https://x.com/i/status/{tweet_id}>"
-    message = f"*Posted successfully\\!*\n\n*Tweet ID:* `{tweet_id}`\n\n*Content:*\n{safe_content}\n\nView: {url}"
+    message = escape_markdown(f"*Posted successfully!*\n\n*Tweet ID:* `{tweet_id}`\n\n*Content:*\n{safe_content}\n\nView: {url}")
     send_alert(message, level="success")
 
 
@@ -776,24 +776,25 @@ def alert_failure(reason: str, content: str = ""):
     if content:
         safe_content = escape_markdown(content)
         msg += f"\n\n*Generated content was:*\n{safe_content}"
-    send_alert(msg, level="error")
+    send_alert(escape_markdown(msg), level="error")
 
 
 def alert_shadowban(content: str, tweet_id: str):
     safe_content = escape_markdown(content)
-    send_alert(
+    msg = (
         f"*SHADOWBAN DETECTED*\n\n"
-        f"Tweet was posted but could not be fetched\\.\n"
+        f"Tweet was posted but could not be fetched.\n"
         f"*Tweet ID:* `{tweet_id}`\n"
         f"*Content:*\n{safe_content}\n\n"
-        f"*Bot will pause for {SHADOWBAN_PAUSE_HOURS} hours\\.*",
-        level="error"
+        f"*Bot will pause for {SHADOWBAN_PAUSE_HOURS} hours.*"
     )
+    send_alert(escape_markdown(msg), level="error")
 
 
 def alert_skip(reason: str):
     safe_reason = escape_markdown(reason)
-    send_alert(f"*Post skipped*\n\n*Reason:* {safe_reason}", level="info")
+    msg = f"*Post skipped*\n\n*Reason:* {safe_reason}"
+    send_alert(escape_markdown(msg), level="info")
 
 
 # =============================================================================
